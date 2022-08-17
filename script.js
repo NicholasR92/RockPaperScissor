@@ -2,10 +2,11 @@
 function randomNum(){
     return Math.floor(Math.random() * 3);
 }
+const playerSelection = prompt("what you picking?", '');
+const computerSelection = getComputerChoice();
 
 function getComputerChoice(){
     let choice = randomNum();
-    console.log(choice);
     if (choice === 2){
         return "Rock";
     }else if(choice === 1){
