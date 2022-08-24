@@ -28,7 +28,29 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-const playerSelection = prompt("what you picking?", '');
-const computerSelection = getComputerChoice();
+let playerScore = 0;
+let computerScore = 0;
 
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+    for (let i = 0; i < 5; i++) {
+            let playerSelection = prompt("what you picking?", '');
+            let computerSelection = getComputerChoice();
+            let round = playRound(playerSelection, computerSelection);
+            console.log(round);
+    
+            if(round === "Player Wins") {
+                playerScore++;
+                console.log(playerSelection + " beats " + computerSelection);
+            } else if (round === "You lose") {
+                computerScore++;
+                console.log(computerSelection + " beats " + playerSelection);
+        } 
+    }  console.log('Player: ' + playerScore);
+       console.log('Computer: ' + computerScore);
+ } 
+
+
+//const playerSelection = prompt("what you picking?", '');
+//const computerSelection = getComputerChoice();
+game();
+
