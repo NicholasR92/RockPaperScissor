@@ -31,7 +31,7 @@ function playRound(playerSelection, computerSelection){
 let playerScore = 0;
 let computerScore = 0;
 
-function game(){
+/* function game(){
     for (let i = 0; i < 5; i++) {
             let playerSelection = prompt("what you picking?", '');
             let computerSelection = getComputerChoice();
@@ -47,10 +47,12 @@ function game(){
         } 
     }  console.log('Player: ' + playerScore);
        console.log('Computer: ' + computerScore);
- } 
+ } */
 
 
 //const playerSelection = prompt("what you picking?", '');
 //const computerSelection = getComputerChoice();
+
+
 game();
 
