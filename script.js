@@ -31,13 +31,53 @@ function playRound(playerSelection, computerSelection){
 let playerScore = 0;
 let computerScore = 0;
 
+
+const computerSelection = getComputerChoice();
+
 const body = document.querySelector('body');
+
 
 const rockButton = document.createElement('button');
 rockButton.style.backgroundColor = "Orange";
+rockButton.style.color = 'white';
+rockButton.style.width = "200px";
 rockButton.textContent = "Rock";
 
+const paperButton = document.createElement('button');
+paperButton.style.backgroundColor = "Blue";
+paperButton.style.color = 'white';
+paperButton.style.width = "200px";
+paperButton.textContent = "Paper";
+
+const scissorButton = document.createElement('button');
+scissorButton.style.backgroundColor = "grey";
+scissorButton.style.color = 'white';
+scissorButton.style.width = "200px";
+scissorButton.textContent = "Scissor";
+
+
+rockButton.addEventListener('click', () => { 
+    let playerSelection = 'rock' 
+    console.log(playRound(playerSelection, computerSelection));
+    
+});
+
+paperButton.addEventListener('click', () => { 
+    let playerSelection = 'paper' 
+    console.log(playRound(playerSelection, computerSelection));
+    
+});
+
+scissorButton.addEventListener('click', () => { 
+    let playerSelection = 'scissors' 
+    console.log(playRound(playerSelection, computerSelection));
+    
+});
+
 body.appendChild(rockButton);
+body.appendChild(paperButton);
+body.appendChild(scissorButton);
+
 
 
 /* function game(){
@@ -63,5 +103,5 @@ body.appendChild(rockButton);
 //const computerSelection = getComputerChoice();
 
 
-game();
+//game();
 
