@@ -58,19 +58,19 @@ scissorButton.textContent = "Scissor";
 
 rockButton.addEventListener('click', () => { 
     let playerSelection = 'rock' 
-    console.log(playRound(playerSelection, computerSelection));
+    results.textContent = (playRound(playerSelection, computerSelection));
     
 });
 
 paperButton.addEventListener('click', () => { 
     let playerSelection = 'paper' 
-    console.log(playRound(playerSelection, computerSelection));
+    results.textContent = (playRound(playerSelection, computerSelection));
     
 });
 
 scissorButton.addEventListener('click', () => { 
     let playerSelection = 'scissors' 
-    console.log(playRound(playerSelection, computerSelection));
+    results.textContent = (playRound(playerSelection, computerSelection));
     
 });
 
@@ -78,6 +78,12 @@ body.appendChild(rockButton);
 body.appendChild(paperButton);
 body.appendChild(scissorButton);
 
+
+const results = document.createElement('div');
+results.setAttribute('style', 'border: solid; width: 400px; height: 350px;')
+
+
+body.appendChild(results);
 
 
 /* function game(){
