@@ -14,25 +14,31 @@ function getComputerChoice(){
     } 
 }
 
+const computerSelection = getComputerChoice();
+
 function playRound(playerSelection, computerSelection){
+    
     if(playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK" || 
        playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "SCISSORS" || 
        playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() == "PAPER"){
-        return "Player Wins";
+        return 'player wins ' + 'player ' + ++playerScore + " computer " + computerScore;
     } else if(playerSelection.toUpperCase() == "PAPER" && computerSelection.toUpperCase() == "SCISSORS" || 
               playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() == "PAPER" || 
               playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() == "ROCK") {
-        return "You lose";
+        return 'computer wins ' + 'player ' + playerScore + " computer " + ++computerScore;
     } else{
         return "Seems great minds think a like";
-    }
+    } 
 }
+
+
+
 
 let playerScore = 0;
 let computerScore = 0;
 
 
-const computerSelection = getComputerChoice();
+
 
 const body = document.querySelector('body');
 
@@ -56,21 +62,18 @@ scissorButton.style.width = "200px";
 scissorButton.textContent = "Scissor";
 
 
-rockButton.addEventListener('click', () => { 
-    let playerSelection = 'rock' 
-    results.textContent = (playRound(playerSelection, computerSelection));
-    
+rockButton.addEventListener('click', () => {  
+    results.textContent = playRound('rock',computerSelection);
+
 });
 
 paperButton.addEventListener('click', () => { 
-    let playerSelection = 'paper' 
-    results.textContent = (playRound(playerSelection, computerSelection));
+    results.textContent = playRound('paper',computerSelection);
     
 });
 
 scissorButton.addEventListener('click', () => { 
-    let playerSelection = 'scissors' 
-    results.textContent = (playRound(playerSelection, computerSelection));
+    results.textContent = playRound('scissors',computerSelection);
     
 });
 
@@ -86,28 +89,12 @@ results.setAttribute('style', 'border: solid; width: 400px; height: 350px;')
 body.appendChild(results);
 
 
-/* function game(){
-    for (let i = 0; i < 5; i++) {
-            let playerSelection = prompt("what you picking?", '');
-            let computerSelection = getComputerChoice();
-            let round = playRound(playerSelection, computerSelection);
-            console.log(round);
-    
-            if(round === "Player Wins") {
-                playerScore++;
-                console.log(playerSelection + " beats " + computerSelection);
-            } else if (round === "You lose") {
-                computerScore++;
-                console.log(computerSelection + " beats " + playerSelection);
-        } 
-    }  console.log('Player: ' + playerScore);
-       console.log('Computer: ' + computerScore);
- } */
+  
 
 
 //const playerSelection = prompt("what you picking?", '');
 //const computerSelection = getComputerChoice();
 
 
-//game();
+
 
