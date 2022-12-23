@@ -1,6 +1,5 @@
 let playerScore = 0;
 let computerScore = 0;
-const computerSelection = getComputerChoice();
 
 
 function randomNum(){
@@ -49,6 +48,7 @@ function playRound(playerSelection, computerSelection){
 
 const body = document.querySelector('body');
 
+
 const rockButton = document.createElement('button');
 rockButton.style.backgroundColor = "Orange";
 rockButton.style.color = 'white';
@@ -68,30 +68,32 @@ scissorButton.style.width = "200px";
 scissorButton.textContent = "Scissor";
 
 const scoreboard = document.createElement('div');
-scoreboard.setAttribute('style', 'border: solid; width: 400px; height: 350px;');
+scoreboard.setAttribute('style', 'border: solid; width: 400px; height: 350px; margin: 50px auto;');
 
-const results = document.createElement('div');
-results.setAttribute('style', 'border: solid; width: 200px; height: 100px; color: red;');
-
-
+body.appendChild(scoreboard);
 body.appendChild(rockButton);
 body.appendChild(paperButton);
 body.appendChild(scissorButton);
-body.appendChild(scoreboard);
+
 
 rockButton.addEventListener('click', () => {  
+    let computerSelection = getComputerChoice();
     scoreboard.textContent = playRound('rock',computerSelection);
-    console.log (computerSelection)
+    console.log (computerSelection);
     
 });
 
 paperButton.addEventListener('click', () => { 
+    let computerSelection = getComputerChoice();
     scoreboard.textContent = playRound('paper',computerSelection);
+    console.log (computerSelection);
     
 });
 
 scissorButton.addEventListener('click', () => { 
+    let computerSelection = getComputerChoice();
     scoreboard.textContent = playRound('scissors',computerSelection);
+    console.log (computerSelection);
     
 });
 
