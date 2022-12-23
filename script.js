@@ -1,3 +1,7 @@
+let playerScore = 0;
+let computerScore = 0;
+const computerSelection = getComputerChoice();
+
 
 function randomNum(){
     return Math.floor(Math.random() * 3);
@@ -14,34 +18,36 @@ function getComputerChoice(){
     } 
 }
 
-const computerSelection = getComputerChoice();
+
+function endGame(){
+    if(playerScore === 5){
+        return 'GAME OVER: PLAYER WINS'
+    } else if(computerScore === 5){
+        return 'GAME OVER: COMPUTER WINS'
+    } else{
+        return '';
+    }
+};
+
 
 function playRound(playerSelection, computerSelection){
     
-    if(playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK" || 
+    if(playerScore === 5 || computerScore === 5){
+        return endGame()
+    } else if(playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK" || 
        playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "SCISSORS" || 
        playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() == "PAPER"){
-        return 'player wins ' + 'player ' + ++playerScore + " computer " + computerScore;
+        return 'player ' + ++playerScore + " computer " + computerScore;
     } else if(playerSelection.toUpperCase() == "PAPER" && computerSelection.toUpperCase() == "SCISSORS" || 
               playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() == "PAPER" || 
               playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() == "ROCK") {
-        return 'computer wins ' + 'player ' + playerScore + " computer " + ++computerScore;
+        return 'player ' + playerScore + " computer " + ++computerScore;
     } else{
         return "Seems great minds think a like";
     } 
 }
 
-
-
-
-let playerScore = 0;
-let computerScore = 0;
-
-
-
-
 const body = document.querySelector('body');
-
 
 const rockButton = document.createElement('button');
 rockButton.style.backgroundColor = "Orange";
@@ -61,32 +67,33 @@ scissorButton.style.color = 'white';
 scissorButton.style.width = "200px";
 scissorButton.textContent = "Scissor";
 
+const scoreboard = document.createElement('div');
+scoreboard.setAttribute('style', 'border: solid; width: 400px; height: 350px;');
 
-rockButton.addEventListener('click', () => {  
-    results.textContent = playRound('rock',computerSelection);
+const results = document.createElement('div');
+results.setAttribute('style', 'border: solid; width: 200px; height: 100px; color: red;');
 
-});
-
-paperButton.addEventListener('click', () => { 
-    results.textContent = playRound('paper',computerSelection);
-    
-});
-
-scissorButton.addEventListener('click', () => { 
-    results.textContent = playRound('scissors',computerSelection);
-    
-});
 
 body.appendChild(rockButton);
 body.appendChild(paperButton);
 body.appendChild(scissorButton);
+body.appendChild(scoreboard);
 
+rockButton.addEventListener('click', () => {  
+    scoreboard.textContent = playRound('rock',computerSelection);
+    console.log (computerSelection)
+    
+});
 
-const results = document.createElement('div');
-results.setAttribute('style', 'border: solid; width: 400px; height: 350px;')
+paperButton.addEventListener('click', () => { 
+    scoreboard.textContent = playRound('paper',computerSelection);
+    
+});
 
-
-body.appendChild(results);
+scissorButton.addEventListener('click', () => { 
+    scoreboard.textContent = playRound('scissors',computerSelection);
+    
+});
 
 
   
