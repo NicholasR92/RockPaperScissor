@@ -19,9 +19,12 @@ function getComputerChoice(){
 
 
 function endGame(){
+    console.log("inside end game");
     if(playerScore === 5){
+        console.log('player wins')
         return 'GAME OVER: PLAYER WINS'
     } else if(computerScore === 5){
+        console.log('computer wins')
         return 'GAME OVER: COMPUTER WINS'
     } else{
         return '';
@@ -30,10 +33,9 @@ function endGame(){
 
 
 function playRound(playerSelection, computerSelection){
-    
-    if(playerScore === 5 || computerScore === 5){
-        return endGame()
-    } else if(playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK" || 
+    console.log(playerScore, computerScore);
+    while(playerScore < 5 && computerScore < 5){
+    if(playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK" || 
        playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "SCISSORS" || 
        playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() == "PAPER"){
         return 'player ' + ++playerScore + " computer " + computerScore;
@@ -42,8 +44,11 @@ function playRound(playerSelection, computerSelection){
               playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() == "ROCK") {
         return 'player ' + playerScore + " computer " + ++computerScore;
     } else{
-        return "Seems great minds think a like";
+        return 'player ' + playerScore + " computer " + computerScore;;
+    }
+     
     } 
+    return endGame();
 }
 
 const body = document.querySelector('body');
@@ -70,6 +75,14 @@ scissorButton.textContent = "Scissor";
 const scoreboard = document.createElement('div');
 scoreboard.setAttribute('style', 'border: solid; width: 400px; height: 350px; margin: 50px auto;');
 
+const choices = document.createElement('div');
+
+
+const points = document.createElement('div');
+choices.setAttribute('style', 'width: auto;')
+
+scoreboard.appendChild(choices);
+scoreboard.appendChild(points);
 body.appendChild(scoreboard);
 body.appendChild(rockButton);
 body.appendChild(paperButton);
@@ -78,22 +91,21 @@ body.appendChild(scissorButton);
 
 rockButton.addEventListener('click', () => {  
     let computerSelection = getComputerChoice();
-    scoreboard.textContent = playRound('rock',computerSelection);
-    console.log (computerSelection);
-    
-});
+    choices.textContent = "Computer: " + computerSelection;
+    points.textContent = playRound('rock',computerSelection);  
+    });
 
 paperButton.addEventListener('click', () => { 
     let computerSelection = getComputerChoice();
-    scoreboard.textContent = playRound('paper',computerSelection);
-    console.log (computerSelection);
+    choices.textContent = "Computer: " + computerSelection;
+    points.textContent = playRound('paper',computerSelection);
     
 });
 
 scissorButton.addEventListener('click', () => { 
     let computerSelection = getComputerChoice();
-    scoreboard.textContent = playRound('scissors',computerSelection);
-    console.log (computerSelection);
+    choices.textContent = "Computer: " + computerSelection;
+    points.textContent = playRound('scissors',computerSelection);
     
 });
 
